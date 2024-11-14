@@ -1,0 +1,274 @@
+<html>
+ <head>
+  <title>
+   Active Projects
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .container {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20%;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        .sidebar img:hover {
+            transform: scale(0.9);
+        }
+        .sidebar p {
+            margin: 5px 0;
+            color: #fff;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .sidebar a:hover {
+            transform: scale(0.9);
+        }
+        .sidebar a i {
+            margin-right: 10px;
+        }
+        .sidebar .glass-ui {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .sidebar .glass-ui img {
+            transition: transform 0.3s ease;
+        }
+        .sidebar .glass-ui img:hover {
+            transform: scale(0.9);
+        }
+        .content {
+            padding: 20px;
+            flex-grow: 1;
+            background: transparent;
+        }
+        .content h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            color: #fff;
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .search-bar input::placeholder {
+            color: #fff;
+        }
+        .project {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .project:hover {
+            transform: scale(0.9);
+        }
+        .project img {
+            width: 40px;
+            height: 40px;
+            border-radius: 20%;
+            margin-right: 20px;
+        }
+        .project .details {
+            flex-grow: 1;
+        }
+        .project .details h3 {
+            color: #000;
+            margin: 0;
+        }
+        .project .details p {
+            color: #000;
+            margin: 5px 0;
+        }
+        .project .progress {
+            width: 100px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+        .project .progress .bar {
+            height: 100%;
+        }
+        .project .progress .bar.to-do {
+            width: 58%;
+            background: #4caf50;
+        }
+        .project .progress .bar.shopping {
+            width: 20%;
+            background: #ff9800;
+        }
+        .project .progress .bar.blog {
+            width: 98%;
+            background: #f44336;
+        }
+        .project .percentage {
+            color: #000;
+        }
+  </style>
+  <script>
+    function filterProjects() {
+        const searchInput = document.getElementById('search-input').value.toLowerCase();
+        const projects = document.getElementsByClassName('project');
+        
+        for (let i = 0; i < projects.length; i++) {
+            const project = projects[i];
+            const projectName = project.getElementsByTagName('h3')[0].innerText.toLowerCase();
+            if (projectName.includes(searchInput)) {
+                project.style.display = '';
+            } else {
+                project.style.display = 'none';
+            }
+        }
+    }
+  </script>
+ </head>
+ <body>
+  <video autoplay loop muted class="background-video">
+   <source src="https://i.imgur.com/fkxNP80.mp4" type="video/mp4"/>
+  </video>
+  <div class="container">
+   <div class="sidebar">
+    <img alt="Profile picture" height="80" src="https://i.imgur.com/7G5igUS.jpeg" width="80"/>
+    <p>
+     Hanoka LW
+    </p>
+    <p>
+     Developer / Gamer
+    </p>
+    <a href="https://discord.com/_why2">
+     <i class="fab fa-discord">
+     </i>
+     Discord
+    </a>
+    <a href="https://t.me/Hanoka983">
+     <i class="fab fa-telegram">
+     </i>
+     Telegram
+    </a>
+    <a href="https://www.youtube.com/@HanokaOK">
+     <i class="fab fa-youtube">
+     </i>
+     YouTube
+    </a>
+    <a href="https://vk.com/hanoka983">
+     <i class="fab fa-vk">
+     </i>
+     VK
+    </a>
+    <div class="glass-ui">
+     <p>
+      @Hanoka983
+     </p>
+     <img alt="Glass UI illustration" height="50" src="https://i.imgur.com/rfvh4DA.jpeg" width="100"/>
+    </div>
+   </div>
+   <div class="content">
+    <h2>
+     Active projects
+    </h2>
+    <div class="search-bar">
+     <i class="fas fa-search">
+     </i>
+     <input id="search-input" onkeyup="filterProjects()" placeholder="Search" type="text"/>
+    </div>
+    <div class="project" onclick="window.location.href='https://t.me/HanokaDesign'">
+     <img alt="To Do List icon" height="40" src="https://i.imgur.com/pd7LSzv.png" width="40"/>
+     <div class="details">
+      <h3>
+       WASDNFT
+      </h3>
+      <p>
+       Telegram Game Bot
+      </p>
+     </div>
+     <div class="progress">
+      <div class="bar to-do">
+      </div>
+     </div>
+     <div class="percentage">
+      58%
+     </div>
+    </div>
+    <div class="project" onclick="window.location.href='https://discord.gg/hD7aTHFHaT'">
+     <img alt="Shopping Cart icon" height="40" src="https://yt3.googleusercontent.com/t3hZtjvV9Zzl8-rPvqYQXcVDn8ADyv3-YQmhM2DH6PTLYfaHb8s7vSMBcW0J6TQfPBhkEhNYZA=s900-c-k-c0x00ffffff-no-rj" width="40"/>
+     <div class="details">
+      <h3>
+       My Minecraft Server
+      </h3>
+      <p>
+       Soon...
+      </p>
+     </div>
+     <div class="progress">
+      <div class="bar shopping">
+      </div>
+     </div>
+     <div class="percentage">
+      20%
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
