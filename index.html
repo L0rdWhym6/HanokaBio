@@ -32,6 +32,10 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 1;
+            transition: box-shadow 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         }
         .sidebar {
             width: 200px;
@@ -45,10 +49,11 @@
             height: 80px;
             border-radius: 20%;
             margin-bottom: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .sidebar img:hover {
             transform: scale(0.9);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         }
         .sidebar p {
             margin: 5px 0;
