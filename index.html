@@ -23,7 +23,7 @@
             object-fit: cover;
             z-index: -1;
         }
-        .volume-container {
+        .controls-container {
             position: absolute;
             top: 10px;
             left: 10px;
@@ -32,8 +32,10 @@
             padding: 10px;
             border-radius: 10px;
             transition: box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
         }
-        .volume-container:hover {
+        .controls-container:hover {
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         }
         .volume-slider {
@@ -44,6 +46,7 @@
             border-radius: 5px;
             outline: none;
             transition: background 0.3s ease;
+            margin-right: 10px;
         }
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -54,7 +57,10 @@
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
         }
         .volume-slider::-moz-range-thumb {
             width: 15px;
@@ -63,7 +69,31 @@
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .volume-slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+        }
+        .play-pause-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .play-pause-btn i {
+            color: #fff;
+        }
+        .play-pause-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .play-pause-btn:active {
+            transform: scale(0.9);
         }
         .container {
             display: flex;
@@ -234,14 +264,41 @@
         const video = document.querySelector('.background-video');
         video.volume = value;
     }
+
+    function togglePlayPause() {
+        const video = document.querySelector('.background-video');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        if (video.paused) {
+            video.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            video.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    }
+
+    window.addEventListener('load', function() {
+        const video = document.querySelector('.background-video');
+        video.play();
+
+        // Simulate 3 clicks on the video background
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                video.click();
+            }, i * 100); // Delay each click by 100ms
+        }
+    });
   </script>
  </head>
  <body>
   <video autoplay loop class="background-video">
    <source src="https://pouch.jumpshare.com/preview/_ZnEBxXBqP78iT1oK-hmpwcliclQUn666FcXiPERS1-5YuQN8uVykOMcJwK5vKRWT0772uZuI2c4uWflH13JryvZUst1r9T96IXiyTp-xZ9KGNZrDKdB0rk8SyLsy2wNTYrbG1peGrWVXPRHEkgmIW6yjbN-I2pg_cnoHs_AmgI.mp4" type="video/mp4"/>
   </video>
-  <div class="volume-container" style="background: rgba(255, 255, 255, 0.3);">
+  <div class="controls-container" style="background: rgba(255, 255, 255, 0.3);">
    <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)"/>
+   <button id="play-pause-btn" class="play-pause-btn" onclick="togglePlayPause()">
+    <i class="fas fa-pause"></i>
+   </button>
   </div>
   <div class="container">
    <div class="sidebar">
