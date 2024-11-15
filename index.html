@@ -23,6 +23,48 @@
             object-fit: cover;
             z-index: -1;
         }
+        .volume-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            transition: box-shadow 0.3s ease;
+        }
+        .volume-container:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 150px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s ease;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: background 0.3s ease;
+        }
+        .volume-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: background 0.3s ease;
+        }
         .container {
             display: flex;
             background: rgba(255, 255, 255, 0.2);
@@ -89,16 +131,18 @@
         .content {
             padding: 20px;
             flex-grow: 1;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
         .content h2 {
-            color: #fff;
+            color: #000;
             margin-bottom: 20px;
         }
         .search-bar {
             display: flex;
             align-items: center;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 10px;
             margin-bottom: 20px;
@@ -106,16 +150,15 @@
         .search-bar input {
             border: none;
             background: transparent;
-            color: #fff;
+            color: #000;
             flex-grow: 1;
             margin-left: 10px;
         }
         .search-bar input::placeholder {
-            color: #fff;
+            color: #000;
         }
         .project {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -186,12 +229,20 @@
             }
         }
     }
+
+    function setVolume(value) {
+        const video = document.querySelector('.background-video');
+        video.volume = value;
+    }
   </script>
  </head>
  <body>
-  <video autoplay loop muted class="background-video">
-   <source src="https://i.imgur.com/fkxNP80.mp4" type="video/mp4"/>
+  <video autoplay loop class="background-video">
+   <source src="https://pouch.jumpshare.com/preview/_ZnEBxXBqP78iT1oK-hmpwcliclQUn666FcXiPERS1-5YuQN8uVykOMcJwK5vKRWT0772uZuI2c4uWflH13JryvZUst1r9T96IXiyTp-xZ9KGNZrDKdB0rk8SyLsy2wNTYrbG1peGrWVXPRHEkgmIW6yjbN-I2pg_cnoHs_AmgI.mp4" type="video/mp4"/>
   </video>
+  <div class="volume-container" style="background: rgba(255, 255, 255, 0.3);">
+   <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="1" oninput="setVolume(this.value)"/>
+  </div>
   <div class="container">
    <div class="sidebar">
     <img alt="Profile picture" height="80" src="https://i.imgur.com/7G5igUS.jpeg" width="80"/>
